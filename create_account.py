@@ -26,7 +26,7 @@ def generate_algorand_keypair():
 
 # funds new account
 def fund_new_acct(private_key, my_address, new_acct_addr):
-    algod_address = "http://localhost:4001"
+    algod_address = "https://testnet-api.algonode.network"
     algod_token = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
     algod_client = algod.AlgodClient(algod_token, algod_address)
 
@@ -72,5 +72,8 @@ def fund_new_acct(private_key, my_address, new_acct_addr):
 # CALLING THE FUNCTIONS #
 ### This function creates the first new account
 new_address, new_private_key, new_passphrase = generate_algorand_keypair()
+print("New account address: {}".format(new_address))
+print("New private key: {}".format(new_private_key))
+print("New passphrase: {}".format(new_passphrase))
 ### This function funds the new account with a previously funded testnet account
 fund_new_acct("cYGCLpViChb078xonSF43x/IUQvdFlI0jPeD30DZCwIMpjdIQn4bsGWxMG+6u5cJAH1NQjKxl7MIRFuAFOnJmg==", "BSTDOSCCPYN3AZNRGBX3VO4XBEAH2TKCGKYZPMYIIRNYAFHJZGNASJMOEI", new_address)
