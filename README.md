@@ -1,3 +1,11 @@
+CHECKLIST
+[COMPLETED] First: Python that creates an account and saves the account info in vars
+[]          Second: create smart contract that will be user identity
+
+
+
+
+
 ######################## Kash Notes
 
 When they sign up on the website they need to create an account on the backend that represents them
@@ -19,5 +27,3 @@ Wants to get rid of the wallets on site and add them inside of the user profile
 MY GOAL IS TO BE ABLE TO HAND OFF TO FROND END PERSON
 	AKA smart contracts and AlgoSDK scripts (this is my specialization)
 
-First: write a JS script or Python that creates an account and saves the account info in vars
-Second: create smart contract that will be user identity
