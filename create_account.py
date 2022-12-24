@@ -35,11 +35,11 @@ def fund_new_acct(private_key, my_address, new_acct_addr):
 
     # build transaction
     params = algod_client.suggested_params()
-    # comment out the next two (2) lines to use suggested fees
     params.flat_fee = True
     params.fee = constants.MIN_TXN_FEE 
     receiver = new_acct_addr
     note = "Hello World".encode()
+    # one algo or 1000000 micro algos
     amount = 1000000
     unsigned_txn = transaction.PaymentTxn(my_address, params, receiver, amount, None, note)
 
