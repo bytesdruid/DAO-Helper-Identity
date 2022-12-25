@@ -5,7 +5,7 @@
 
 from algosdk import *
 from algosdk.future.transaction import *
-from algosdk.v2client import algod
+from algosdk.v2client import *
 from algosdk.future import transaction
 from algosdk import constants
 import json
@@ -80,52 +80,21 @@ fund_new_acct("cYGCLpViChb078xonSF43x/IUQvdFlI0jPeD30DZCwIMpjdIQn4bsGWxMG+6u5cJA
 
 
 
+######################################
+#### function creates application ####
 
-
-def createAuctionApp(
+def createSoulboundApp(
     client: AlgodClient,
     sender: Account,
-    seller: str,
-    nftID: int,
-    startTime: int,
-    endTime: int,
-    reserve: int,
-    minBidIncrement: int,
 ) -> int:
-    """Create a new auction.
 
-    Args:
-        client: An algod client.
-        sender: The account that will create the auction application.
-        seller: The address of the seller that currently holds the NFT being
-            auctioned.
-        nftID: The ID of the NFT being auctioned.
-        startTime: A UNIX timestamp representing the start time of the auction.
-            This must be greater than the current UNIX timestamp.
-        endTime: A UNIX timestamp representing the end time of the auction. This
-            must be greater than startTime.
-        reserve: The reserve amount of the auction. If the auction ends without
-            a bid that is equal to or greater than this amount, the auction will
-            fail, meaning the bid amount will be refunded to the lead bidder and
-            the NFT will return to the seller.
-        minBidIncrement: The minimum difference required between a new bid and
-            the current leading bid.
-
-    Returns:
-        The ID of the newly created auction app.
-    """
     approval, clear = getContracts(client)
 
     globalSchema = transaction.StateSchema(num_uints=7, num_byte_slices=2)
     localSchema = transaction.StateSchema(num_uints=0, num_byte_slices=0)
 
     app_args = [
-        encoding.decode_address(seller),
-        nftID.to_bytes(8, "big"),
-        startTime.to_bytes(8, "big"),
-        endTime.to_bytes(8, "big"),
-        reserve.to_bytes(8, "big"),
-        minBidIncrement.to_bytes(8, "big"),
+        # what app args do we need?
     ]
 
     txn = transaction.ApplicationCreateTxn(
