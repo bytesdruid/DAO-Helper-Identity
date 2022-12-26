@@ -7,8 +7,8 @@ from algosdk import account, encoding
 
 from pyteal import compileTeal, Mode
 
-from .account import Account
-from .contracts import approval_program, clear_state_program
+import account
+import contracts
 from .util import (
     waitForTransaction,
     fullyCompileContract,
@@ -24,14 +24,14 @@ def getContracts(client: AlgodClient) -> Tuple[bytes, bytes]:
     global CLEAR_STATE_PROGRAM
 
     if len(APPROVAL_PROGRAM) == 0:
-        APPROVAL_PROGRAM = fullyCompileContract(client, approval_program())
-        CLEAR_STATE_PROGRAM = fullyCompileContract(client, clear_state_program())
+        APPROVAL_PROGRAM = fullyCompileContract(client, contracts.approval_program())
+        CLEAR_STATE_PROGRAM = fullyCompileContract(client, contracts.clear_state_program())
 
     return APPROVAL_PROGRAM, CLEAR_STATE_PROGRAM
 
 def createIdentityApp(
     client: AlgodClient,
-    sender: Account,
+    sender: account.Account,
 ) -> int:
 
     approval, clear = getContracts(client)

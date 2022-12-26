@@ -5,7 +5,7 @@ from algosdk.kmd import KMDClient
 
 from ..account import Account
 
-ALGOD_ADDRESS = "http://localhost:4001"
+ALGOD_ADDRESS = "https://testnet-api.algonode.network"
 ALGOD_TOKEN = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 
 

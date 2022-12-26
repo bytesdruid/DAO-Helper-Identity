@@ -5,16 +5,16 @@ import pytest
 from algosdk import account, encoding
 from algosdk.logic import get_application_address
 
-from .operations import createIdentityApp
-from .util import getBalances, getAppGlobalState, getLastBlockTimestamp
-from .testing.setup import getAlgodClient
-from .testing.resources import getTemporaryAccount, optInToAsset, createDummyAsset
+import operations
+import util
+import testing.setup
+import testing.resources
 
 def test_creation():
-    client = getAlgodClient()
-    creator = getTemporaryAccount(client)
+    client = testing.setup.getAlgodClient()
+    creator = testing.resources.getTemporaryAccount(client)
 
-    appID = createIdentityApp(
+    appID = operations.createIdentityApp(
         client=client,
         sender=creator,
     )
