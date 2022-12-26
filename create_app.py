@@ -1,8 +1,3 @@
-# Previously funded account is used to fund new account
-# My address: BSTDOSCCPYN3AZNRGBX3VO4XBEAH2TKCGKYZPMYIIRNYAFHJZGNASJMOEI
-# My private key: cYGCLpViChb078xonSF43x/IUQvdFlI0jPeD30DZCwIMpjdIQn4bsGWxMG+6u5cJAH1NQjKxl7MIRFuAFOnJmg==
-# My passphrase: comfort anxiety nuclear citizen below airport leisure smooth public major rose worth mother stamp tribe bitter medal cotton wink wealth like wagon aware abandon witness
-
 from algosdk import *
 from algosdk.future.transaction import *
 from algosdk.v2client import *
@@ -11,10 +6,17 @@ from algosdk import constants
 import json
 import base64
 
+############################
+#### ACCOUNT GENERATION ####
+############################
+
+# Previously funded account is used to fund new account
+# My address: BSTDOSCCPYN3AZNRGBX3VO4XBEAH2TKCGKYZPMYIIRNYAFHJZGNASJMOEI
+# My private key: cYGCLpViChb078xonSF43x/IUQvdFlI0jPeD30DZCwIMpjdIQn4bsGWxMG+6u5cJAH1NQjKxl7MIRFuAFOnJmg==
+# My passphrase: comfort anxiety nuclear citizen below airport leisure smooth public major rose worth mother stamp tribe bitter medal cotton wink wealth like wagon aware abandon witness
+
 pk_1 = "cYGCLpViChb078xonSF43x/IUQvdFlI0jPeD30DZCwIMpjdIQn4bsGWxMG+6u5cJAH1NQjKxl7MIRFuAFOnJmg=="
 sk_1 = mnemonic.to_private_key("comfort anxiety nuclear citizen below airport leisure smooth public major rose worth mother stamp tribe bitter medal cotton wink wealth like wagon aware abandon witness")
-
-#### ACCOUNT GENERATION ####
 
 # creates an account and prints info
 def generate_algorand_keypair():
@@ -78,10 +80,9 @@ print("New passphrase: {}".format(new_passphrase))
 ### This function funds the new account with a previously funded testnet account
 fund_new_acct("cYGCLpViChb078xonSF43x/IUQvdFlI0jPeD30DZCwIMpjdIQn4bsGWxMG+6u5cJAH1NQjKxl7MIRFuAFOnJmg==", "BSTDOSCCPYN3AZNRGBX3VO4XBEAH2TKCGKYZPMYIIRNYAFHJZGNASJMOEI", new_address)
 
-
-
 ######################################
-#### function creates application ####
+#### APPLICATION DEPLOYED ############
+######################################
 
 from typing import Tuple, List
 
