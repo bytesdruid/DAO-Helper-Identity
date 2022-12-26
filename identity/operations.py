@@ -20,13 +20,7 @@ CLEAR_STATE_PROGRAM = b""
 
 
 def getContracts(client: AlgodClient) -> Tuple[bytes, bytes]:
-    """Get the compiled TEAL contracts for the auction.
-    Args:
-        client: An algod client that has the ability to compile TEAL programs.
-    Returns:
-        A tuple of 2 byte strings. The first is the approval program, and the
-        second is the clear state program.
-    """
+
     global APPROVAL_PROGRAM
     global CLEAR_STATE_PROGRAM
 
@@ -35,3 +29,41 @@ def getContracts(client: AlgodClient) -> Tuple[bytes, bytes]:
         CLEAR_STATE_PROGRAM = fullyCompileContract(client, clear_state_program())
 
     return APPROVAL_PROGRAM, CLEAR_STATE_PROGRAM
+
+def createIdentityApp(
+    client: AlgodClient,
+    sender: Account,
+) -> int:
+
+    approval, clear = getContracts(client)
+
+    globalSchema = transaction.StateSchema(num_uints=7, num_byte_slices=2)
+    localSchema = transaction.StateSchema(num_uints=0, num_byte_slices=0)
+
+    app_args = [
+        encoding.decode_address(seller),
+        nftID.to_bytes(8, "big"),
+        startTime.to_bytes(8, "big"),
+        endTime.to_bytes(8, "big"),
+        reserve.to_bytes(8, "big"),
+        minBidIncrement.to_bytes(8, "big"),
+    ]
+
+    txn = transaction.ApplicationCreateTxn(
+        sender=sender.getAddress(),
+        on_complete=transaction.OnComplete.NoOpOC,
+        approval_program=approval,
+        clear_program=clear,
+        global_schema=globalSchema,
+        local_schema=localSchema,
+        app_args=app_args,
+        sp=client.suggested_params(),
+    )
+
+    signedTxn = txn.sign(sender.getPrivateKey())
+
+    client.send_transaction(signedTxn)
+
+    response = waitForTransaction(client, signedTxn.get_txid())
+    assert response.applicationIndex is not None and response.applicationIndex > 0
+    return response.applicationIndex
