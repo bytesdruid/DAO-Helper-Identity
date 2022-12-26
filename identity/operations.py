@@ -9,11 +9,7 @@ from pyteal import compileTeal, Mode
 
 import account
 import contracts
-from .util import (
-    waitForTransaction,
-    fullyCompileContract,
-    getAppGlobalState,
-)
+import util 
 
 APPROVAL_PROGRAM = b""
 CLEAR_STATE_PROGRAM = b""
@@ -24,8 +20,8 @@ def getContracts(client: AlgodClient) -> Tuple[bytes, bytes]:
     global CLEAR_STATE_PROGRAM
 
     if len(APPROVAL_PROGRAM) == 0:
-        APPROVAL_PROGRAM = fullyCompileContract(client, contracts.approval_program())
-        CLEAR_STATE_PROGRAM = fullyCompileContract(client, contracts.clear_state_program())
+        APPROVAL_PROGRAM = util.fullyCompileContract(client, contracts.approval_program())
+        CLEAR_STATE_PROGRAM = util.fullyCompileContract(client, contracts.clear_state_program())
 
     return APPROVAL_PROGRAM, CLEAR_STATE_PROGRAM
 
@@ -59,6 +55,6 @@ def createIdentityApp(
 
     client.send_transaction(signedTxn)
 
-    response = waitForTransaction(client, signedTxn.get_txid())
+    response = util.waitForTransaction(client, signedTxn.get_txid())
     assert response.applicationIndex is not None and response.applicationIndex > 0
     return response.applicationIndex
