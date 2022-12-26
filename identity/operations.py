@@ -5,7 +5,7 @@ from algosdk.future import transaction
 from algosdk.logic import get_application_address
 from algosdk import account, encoding
 
-from pyteal import compileTeal, Mode
+import pyteal # import compileTeal, Mode
 
 import account
 import contracts

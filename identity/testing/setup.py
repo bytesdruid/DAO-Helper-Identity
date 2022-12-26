@@ -3,7 +3,7 @@ from typing import Optional, List
 from algosdk.v2client.algod import AlgodClient
 from algosdk.kmd import KMDClient
 
-from ..account import Account
+import account
 
 ALGOD_ADDRESS = "https://testnet-api.algonode.network"
 ALGOD_TOKEN = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
@@ -24,10 +24,10 @@ def getKmdClient() -> KMDClient:
 KMD_WALLET_NAME = "unencrypted-default-wallet"
 KMD_WALLET_PASSWORD = ""
 
-kmdAccounts: Optional[List[Account]] = None
+kmdAccounts: Optional[List[account.Account]] = None
 
 
-def getGenesisAccounts() -> List[Account]:
+def getGenesisAccounts() -> List[account.Account]:
     global kmdAccounts
 
     if kmdAccounts is None:
@@ -51,7 +51,7 @@ def getGenesisAccounts() -> List[Account]:
                 kmd.export_key(walletHandle, KMD_WALLET_PASSWORD, addr)
                 for addr in addresses
             ]
-            kmdAccounts = [Account(sk) for sk in privateKeys]
+            kmdAccounts = [account.Account(sk) for sk in privateKeys]
         finally:
             kmd.release_wallet_handle(walletHandle)
 

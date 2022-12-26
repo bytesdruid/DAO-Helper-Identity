@@ -3,7 +3,7 @@ from base64 import b64decode
 from algosdk.v2client.algod import AlgodClient
 from algosdk import encoding
 from pyteal import compileTeal, Mode, Expr
-from .account import Account
+import account # import Account
 
 
 class PendingTxnResponse:
