@@ -18,7 +18,6 @@ from .util import (
 APPROVAL_PROGRAM = b""
 CLEAR_STATE_PROGRAM = b""
 
-
 def getContracts(client: AlgodClient) -> Tuple[bytes, bytes]:
 
     global APPROVAL_PROGRAM
@@ -42,6 +41,7 @@ def createIdentityApp(
 
     app_args = [
         # add app args as needed
+        # currently no app args needed on creation
     ]
 
     txn = transaction.ApplicationCreateTxn(
