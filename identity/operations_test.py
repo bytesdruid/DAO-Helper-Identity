@@ -12,5 +12,13 @@ from .testing.resources import getTemporaryAccount, optInToAsset, createDummyAss
 
 def test_creation():
     client = getAlgodClient()
+    creator = getTemporaryAccount(client)
 
-    
+    appID = createIdentityApp(
+        client=client,
+        sender=creator,
+    )
+
+    print(appID)
+
+test_creation()
