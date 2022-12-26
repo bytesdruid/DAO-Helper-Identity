@@ -41,12 +41,7 @@ def createIdentityApp(
     localSchema = transaction.StateSchema(num_uints=0, num_byte_slices=0)
 
     app_args = [
-        encoding.decode_address(seller),
-        nftID.to_bytes(8, "big"),
-        startTime.to_bytes(8, "big"),
-        endTime.to_bytes(8, "big"),
-        reserve.to_bytes(8, "big"),
-        minBidIncrement.to_bytes(8, "big"),
+        # add app args as needed
     ]
 
     txn = transaction.ApplicationCreateTxn(
