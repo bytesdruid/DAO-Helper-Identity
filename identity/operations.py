@@ -11,6 +11,12 @@ import account
 import contracts
 import util 
 
+ALGOD_ADDRESS = "https://testnet-api.algonode.network"
+ALGOD_TOKEN = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+
+def getAlgodClient() -> AlgodClient:
+    return AlgodClient(ALGOD_TOKEN, ALGOD_ADDRESS)
+
 APPROVAL_PROGRAM = b""
 CLEAR_STATE_PROGRAM = b""
 
@@ -26,13 +32,14 @@ def getContracts(client: AlgodClient) -> Tuple[bytes, bytes]:
     return APPROVAL_PROGRAM, CLEAR_STATE_PROGRAM
 
 def createIdentityApp(
-    client: AlgodClient,
-    sender: account.Account,
+    client,
+    sender_addr,
+    sender_pk
 ) -> int:
 
     approval, clear = getContracts(client)
 
-    globalSchema = transaction.StateSchema(num_uints=7, num_byte_slices=2)
+    globalSchema = transaction.StateSchema(num_uints=3, num_byte_slices=3)
     localSchema = transaction.StateSchema(num_uints=0, num_byte_slices=0)
 
     app_args = [
@@ -41,7 +48,7 @@ def createIdentityApp(
     ]
 
     txn = transaction.ApplicationCreateTxn(
-        sender=sender.getAddress(),
+        sender=sender_addr,
         on_complete=transaction.OnComplete.NoOpOC,
         approval_program=approval,
         clear_program=clear,
@@ -51,10 +58,22 @@ def createIdentityApp(
         sp=client.suggested_params(),
     )
 
-    signedTxn = txn.sign(sender.getPrivateKey())
+    signedTxn = txn.sign(sender_pk)
 
     client.send_transaction(signedTxn)
 
     response = util.waitForTransaction(client, signedTxn.get_txid())
     assert response.applicationIndex is not None and response.applicationIndex > 0
     return response.applicationIndex
+
+###################
+#### APP CALLS ####
+###################
+
+AlgodClient = getAlgodClient()
+app = createIdentityApp(
+    client=AlgodClient,
+    sender_addr="BSTDOSCCPYN3AZNRGBX3VO4XBEAH2TKCGKYZPMYIIRNYAFHJZGNASJMOEI",
+    sender_pk="cYGCLpViChb078xonSF43x/IUQvdFlI0jPeD30DZCwIMpjdIQn4bsGWxMG+6u5cJAH1NQjKxl7MIRFuAFOnJmg==",
+)
+print(app)
