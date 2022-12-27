@@ -1,9 +1,13 @@
 MY GOAL IS TO BE ABLE TO HAND OFF TO FROND END PERSON AKA smart contracts and AlgoSDK scripts (this is my specialization)
 
-CHECKLIST
+####################### CHECKLIST
+
 [COMPLETED] First: Python that creates an account and saves the account info in vars
+
 [COMPLETED] Second: create smart contract that will be user identity
+
 [COMPLETED] Third: create scripting that deployes smart contract
+
 [] Fourth: link SC and newly created user account, new acct is soulbound owner
 
 ######################## Kash 12/21 Notes
