@@ -6,7 +6,7 @@ MY GOAL IS TO BE ABLE TO HAND OFF TO FROND END PERSON AKA smart contracts and Al
 
 [COMPLETED] Second: create smart contract that will be user identity
 
-[COMPLETED] Third: create scripting that deployes smart contract
+[COMPLETED] Third: create scripting that deploys smart contract
 
 [] Fourth: link SC and newly created user account, new acct is soulbound owner
 
