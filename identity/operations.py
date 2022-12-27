@@ -3,11 +3,7 @@ from typing import Tuple, List
 from algosdk.v2client.algod import AlgodClient
 from algosdk.future import transaction
 from algosdk.logic import get_application_address
-from algosdk import account, encoding
 
-import pyteal # import compileTeal, Mode
-
-import account
 import contracts
 import util 
 
