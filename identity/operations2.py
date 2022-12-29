@@ -6,7 +6,7 @@
 import json
 import base64
 import contracts
-import util 
+from util import *
 from typing import Tuple, List
 from algosdk import *
 from algosdk.future.transaction import *
@@ -19,7 +19,6 @@ from algosdk.logic import get_application_address
 
 pk_1 = "cYGCLpViChb078xonSF43x/IUQvdFlI0jPeD30DZCwIMpjdIQn4bsGWxMG+6u5cJAH1NQjKxl7MIRFuAFOnJmg=="
 sk_1 = mnemonic.to_private_key("comfort anxiety nuclear citizen below airport leisure smooth public major rose worth mother stamp tribe bitter medal cotton wink wealth like wagon aware abandon witness")
-
 
 ALGOD_ADDRESS = "https://testnet-api.algonode.network"
 ALGOD_TOKEN = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
@@ -36,8 +35,8 @@ def getContracts(client: AlgodClient) -> Tuple[bytes, bytes]:
     global CLEAR_STATE_PROGRAM
 
     if len(APPROVAL_PROGRAM) == 0:
-        APPROVAL_PROGRAM = util.fullyCompileContract(client, contracts.approval_program())
-        CLEAR_STATE_PROGRAM = util.fullyCompileContract(client, contracts.clear_state_program())
+        APPROVAL_PROGRAM = fullyCompileContract(client, contracts.approval_program())
+        CLEAR_STATE_PROGRAM = fullyCompileContract(client, contracts.clear_state_program())
 
     return APPROVAL_PROGRAM, CLEAR_STATE_PROGRAM
 
@@ -72,7 +71,7 @@ def createIdentityApp(
 
     client.send_transaction(signedTxn)
 
-    response = util.waitForTransaction(client, signedTxn.get_txid())
+    response = waitForTransaction(client, signedTxn.get_txid())
     assert response.applicationIndex is not None and response.applicationIndex > 0
     return response.applicationIndex
 
