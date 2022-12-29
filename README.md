@@ -8,7 +8,7 @@ MY GOAL IS TO BE ABLE TO HAND OFF TO FROND END PERSON AKA smart contracts and Al
 
 [COMPLETED] Third: create scripting that deploys smart contract
 
-[] Fourth: link SC and newly created user account, new acct is soulbound owner
+[COMPLETED] Fourth: link SC and newly created user account, new acct is soulbound owner
 
 ######################## Kash 12/21 Notes
 
