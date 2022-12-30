@@ -33,10 +33,10 @@ MY GOAL IS TO BE ABLE TO HAND OFF TO FROND END PERSON AKA smart contracts and Al
 ###################################################################
 
 Goals:
-    1. Wants to get rid of the wallets on site and add them inside of the user profile
-    2. When users sign up on the website need to create an algo account on the backend that represents them
-        a. add other chain wallet address information
-    3. Least we can do on chain is prove that a wallet owns a profile (soulbound SC and owner acct)
+    1. Wants to get rid of the wallets on site and add them inside of the user profile [5]
+    2. When users sign up on the website need to create an algo account  and SC on the backend that represents them [1,2]
+        a. add other chain wallet address information [5]
+    3. Least we can do on chain is prove that a wallet owns a profile (soulbound SC and owner acct) [1,2]
     4. Can we incorporate [magic_link]?
     5. We want to show ownership of DAO Helper profile on chain.
 
