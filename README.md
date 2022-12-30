@@ -23,6 +23,7 @@ MY GOAL IS TO BE ABLE TO HAND OFF TO FROND END PERSON AKA smart contracts and Al
             H. hours worked
             I. NEAR Wallet Addresses
             J. Tokens
+            K. DAO Helper Username
             
 [] Sixth: add opt in and transfer app calls to show that address is SC owner
 
@@ -33,12 +34,11 @@ MY GOAL IS TO BE ABLE TO HAND OFF TO FROND END PERSON AKA smart contracts and Al
 ###################################################################
 
 Goals:
-    1. Wants to get rid of the wallets on site and add them inside of the user profile [5]
-    2. When users sign up on the website need to create an algo account  and SC on the backend that represents them [1,2]
-        a. add other chain wallet address information [5]
-    3. Least we can do on chain is prove that a wallet owns a profile (soulbound SC and owner acct) [1,2]
-    4. Can we incorporate [magic_link]?
-    5. We want to show ownership of DAO Helper profile on chain.
+    1. [5] Wants to get rid of the wallets on site and add them inside of the user profile.
+    2. [1,2] When users sign up on the website need to create an algo account  and SC on the backend that represents them.
+        a. [5] Add other chain wallet address information.
+    3. [1,2] Least we can do on chain is prove that a wallet owns a profile (soulbound SC and owner acct).
+    4. Can we incorporate [magic_link]? [NO] They only provide MetaMask, WalletConnect and Coinbase Wallet suppport.
+    5. [5] We want to show ownership of DAO Helper profile on chain.
 
 ###################################################################
-
