@@ -2,13 +2,13 @@ MY GOAL IS TO BE ABLE TO HAND OFF TO FROND END PERSON AKA smart contracts and Al
 
 ####################### CHECKLIST
 
-[COMPLETED] First: Python that creates an account and saves the account info in vars
+[COMPLETED_12/24] First: Python that creates an account and saves the account info in vars
 
-[COMPLETED] Second: create smart contract that will be user identity
+[COMPLETED_12/25] Second: create smart contract that will be user identity
 
-[COMPLETED] Third: create scripting that deploys smart contract
+[COMPLETED_12/26] Third: create scripting that deploys smart contract
 
-[COMPLETED] Fourth: link SC and newly created user account, new acct is soulbound owner
+[COMPLETED_12/28] Fourth: link SC and newly created user account, new acct is soulbound owner
 
 [] Fifth: add all V1 variables in SC for information we want to capture
 
