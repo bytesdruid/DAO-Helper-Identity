@@ -1,6 +1,8 @@
 MY GOAL IS TO BE ABLE TO HAND OFF TO FROND END PERSON AKA smart contracts and AlgoSDK scripts (this is my specialization)
 
-####################### CHECKLIST
+####################################################################
+####################### CHECKLIST ##################################
+####################################################################
 
 [COMPLETED_12/24] First: Python that creates an account and saves the account info in vars
 
@@ -11,12 +13,17 @@ MY GOAL IS TO BE ABLE TO HAND OFF TO FROND END PERSON AKA smart contracts and Al
 [COMPLETED_12/28] Fourth: link SC and newly created user account, new acct is soulbound owner
 
 [] Fifth: add all V1 variables in SC for information we want to capture
+            A. ETH Wallet Addresses
 
 [] Sixth: add opt in and transfer app calls to show that address is SC owner
 
 [] Seventh: add application calls that update information in the SC
 
-######################## Kash 12/21 Notes
+###################################################################
+####################### Kash 12/21 Notes ##########################
+###################################################################
+
+Wants to get rid of the wallets on site and add them inside of the user profile
 
 When they sign up on the website they need to create an account on the backend that represents them
 
@@ -27,4 +34,5 @@ When they sign up on the website they need to create an account on the backend t
 
 Using magic link
 
-Wants to get rid of the wallets on site and add them inside of the user profile
+###################################################################
+
