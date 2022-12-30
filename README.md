@@ -14,7 +14,7 @@ MY GOAL IS TO BE ABLE TO HAND OFF TO FROND END PERSON AKA smart contracts and Al
 
 [] Sixth: add opt in and transfer app calls to show that address is SC owner
 
-[] Seventh: 
+[] Seventh: add application calls that update information in the SC
 
 ######################## Kash 12/21 Notes
 
