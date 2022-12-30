@@ -32,11 +32,10 @@ MY GOAL IS TO BE ABLE TO HAND OFF TO FROND END PERSON AKA smart contracts and Al
 ####################### Kash 12/21 Notes ##########################
 ###################################################################
 
-Wants to get rid of the wallets on site and add them inside of the user profile
-
-When they sign up on the website they need to create an account on the backend that represents them
-
-1. Least we can do on chain is prove that a wallet owns a profile (V1)
+Goals:
+    1. Wants to get rid of the wallets on site and add them inside of the user profile
+    2. When users sign up on the website need to create an algo account on the backend that represents them
+    3. Least we can do on chain is prove that a wallet owns a profile (soulbound SC and owner acct)
 2. Adding other wallet (ie a reference to an ethereum wallet)
 3. Need to figure out creating wallet auto
 4. Showing ownership of profile on chain
