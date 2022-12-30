@@ -10,6 +10,12 @@ MY GOAL IS TO BE ABLE TO HAND OFF TO FROND END PERSON AKA smart contracts and Al
 
 [COMPLETED] Fourth: link SC and newly created user account, new acct is soulbound owner
 
+[] Fifth: add all V1 variables in SC for information we want to capture
+
+[] Sixth: add opt in and transfer app calls to show that address is SC owner
+
+[] Seventh: 
+
 ######################## Kash 12/21 Notes
 
 When they sign up on the website they need to create an account on the backend that represents them
