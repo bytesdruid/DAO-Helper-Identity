@@ -14,7 +14,16 @@ MY GOAL IS TO BE ABLE TO HAND OFF TO FROND END PERSON AKA smart contracts and Al
 
 [] Fifth: add all V1 variables in SC for information we want to capture
             A. ETH Wallet Addresses
-
+            B. Email
+            C. Name
+            D. DAOs/Memberships
+            E. NFT/Badges
+            F. Skills
+            G. tasks completed
+            H. hours worked
+            I. NEAR Wallet Addresses
+            J. Tokens
+            
 [] Sixth: add opt in and transfer app calls to show that address is SC owner
 
 [] Seventh: add application calls that update information in the SC
