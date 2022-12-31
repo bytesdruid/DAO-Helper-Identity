@@ -1,32 +1,26 @@
 from pyteal import *
 
-            A. ETH Wallet Addresses
-            B. Email
-            C. Name
-            D. DAOs/Memberships
-            E. NFT/Badges
-            F. Skills
-            G. tasks completed
-            H. hours worked
-            I. NEAR Wallet Addresses
-            J. Tokens
-            K. DAO Helper Username
+            # A. ETH Wallet Addresses
+            # B. Email
+            # C. Name
+            # D. DAOs/Memberships
+            # E. NFT/Badges
+            # F. Skills
+            # G. tasks completed
+            # H. hours worked
+            # I. NEAR Wallet Addresses
+            # J. Tokens
+            # K. DAO Helper Username [GOOD]
 
 def approval_program():
     on_creation = Seq(
         [
-            # g byteslice - asset name is Bloom Credential
+            # 1 g byteslice - DAO Helper Username
             App.globalPut(Bytes("DAO_Helper_Username"), Bytes("")),
-            # g byteslice - unit name is BLT
-            App.globalPut(Bytes("UnitName"), Bytes("BL1")),
-            # g byteslice - credentials
-            App.globalPut(Bytes("Credentials"), Bytes("Cred1;Cred2;Cred3")),
-            # g int - decimals
-            App.globalPut(Bytes("Decimals"), Int(0)),
-            # g Int - total supply 
-            App.globalPut(Bytes("Total"), Int(1)),
-            # g Int - reserve is total amount not sitting in local balance
-            App.globalPut(Bytes("GlobalReserve"), Int(1)),
+            # 2 g byteslice - 
+            App.globalPut(Bytes("Email_Address"), Bytes("")),
+
+
             # approve sequence
             Return(Int(1)),
         ]
