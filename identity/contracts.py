@@ -7,7 +7,7 @@ def approval_program():
     on_creation = Seq(
         [
             # 1 g byteslice - Identity Owner's Algorand Address
-            App.globalPut(Bytes("Soulbound_Identity_Owner"), Bytes(Global.creator_address())),
+            App.globalPut(Bytes("Soulbound_Identity_Owner"), Bytes(Txn.application_args[1])),
             # 2 g byteslice - DAO Helper Username
             App.globalPut(Bytes("DAO_Helper_Username"), Bytes("")),
             # 3 g byteslice - Name ??? Don't think we use their name b/c of anonymity

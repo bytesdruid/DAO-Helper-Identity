@@ -48,12 +48,12 @@ def createIdentityApp(
 
     approval, clear = getContracts(client)
 
-    globalSchema = transaction.StateSchema(num_uints=3, num_byte_slices=3)
+    globalSchema = transaction.StateSchema(num_uints=11, num_byte_slices=1)
     localSchema = transaction.StateSchema(num_uints=0, num_byte_slices=0)
 
     app_args = [
-        # add app args as needed
-        # currently no app args needed on creation
+        # encodes the sender address as the soulbound address
+        encoding.decode_address(sender_addr),
     ]
 
     txn = transaction.ApplicationCreateTxn(
