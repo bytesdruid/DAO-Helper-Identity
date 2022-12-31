@@ -18,10 +18,12 @@ def approval_program():
             App.globalPut(Bytes("ETH_Wallet_Addresses"), Bytes("")),
             # 5 g byteslice - NEAR Wallet Addresses
             App.globalPut(Bytes("NEAR_Wallet_Addresses"), Bytes("")),
-            # 6 g byteslice - DAOs_Memberships
+            # 6 g byteslice - DAOs and Memberships
             App.globalPut(Bytes("DAOs_Memberships"), Bytes("")),
-            # 7 g byteslice - NFTs_Badges
+            # 7 g byteslice - NFTs and Badges
             App.globalPut(Bytes("NFTs_Badges"), Bytes("")),
+            # 8 g byteslice - Skills
+            App.globalPut(Bytes("Skills"), Bytes("")),
 
             # approve sequence
             Return(Int(1)),
