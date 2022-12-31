@@ -1,8 +1,5 @@
 from pyteal import *
 
-            # H. hours worked
-            # J. Tokens
-
 def approval_program():
     on_creation = Seq(
         [
@@ -28,7 +25,8 @@ def approval_program():
             App.globalPut(Bytes("Tasks_Completed"), Bytes("")),
             # 11 g byteslice - Tokens
             App.globalPut(Bytes("Tokens"), Bytes("")),
-
+            # 1 g int - Hours Worked
+            App.globalPut(Bytes("Hours_Worked"), Int(0)),
             # approve sequence
             Return(Int(1)),
         ]
