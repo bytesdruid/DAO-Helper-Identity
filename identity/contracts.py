@@ -3,18 +3,30 @@ from pyteal import *
 def approval_program():
     on_creation = Seq(
         [
-            # g byteslice - asset name is Bloom Credential
-            App.globalPut(Bytes("AssetName"), Bytes("Bloom Credentials")),
-            # g byteslice - unit name is BLT
-            App.globalPut(Bytes("UnitName"), Bytes("BL1")),
-            # g byteslice - credentials
-            App.globalPut(Bytes("Credentials"), Bytes("Cred1;Cred2;Cred3")),
-            # g int - decimals
-            App.globalPut(Bytes("Decimals"), Int(0)),
-            # g Int - total supply 
-            App.globalPut(Bytes("Total"), Int(1)),
-            # g Int - reserve is total amount not sitting in local balance
-            App.globalPut(Bytes("GlobalReserve"), Int(1)),
+            # 1 g byteslice - Identity Owner's Algorand Address
+            App.globalPut(Bytes("Soulbound_Identity_Owner"), Bytes(Global.creator_address())),
+            # 2 g byteslice - DAO Helper Username
+            App.globalPut(Bytes("DAO_Helper_Username"), Bytes("")),
+            # 3 g byteslice - Name ??? Don't think we use their name b/c of anonymity
+            App.globalPut(Bytes("Name"), Bytes("")),
+            # 4 g byteslice - Email Address
+            App.globalPut(Bytes("Email_Address"), Bytes("")),
+            # 5 g byteslice - ETH Wallet Addresses
+            App.globalPut(Bytes("ETH_Wallet_Addresses"), Bytes("")),
+            # 6 g byteslice - NEAR Wallet Addresses
+            App.globalPut(Bytes("NEAR_Wallet_Addresses"), Bytes("")),
+            # 7 g byteslice - DAOs and Memberships
+            App.globalPut(Bytes("DAOs_Memberships"), Bytes("")),
+            # 8 g byteslice - NFTs and Badges
+            App.globalPut(Bytes("NFTs_Badges"), Bytes("")),
+            # 9 g byteslice - Skills
+            App.globalPut(Bytes("Skills"), Bytes("")),
+            # 10 g byteslice - Tasks Completed
+            App.globalPut(Bytes("Tasks_Completed"), Bytes("")),
+            # 11 g byteslice - Tokens
+            App.globalPut(Bytes("Tokens"), Bytes("")),
+            # 1 g int - Hours Worked
+            App.globalPut(Bytes("Hours_Worked"), Int(0)),
             # approve sequence
             Return(Int(1)),
         ]
@@ -34,8 +46,7 @@ def approval_program():
     opt_in = Seq([
         # must be creator to opt in 
         Assert(Txn.sender() == Global.creator_address()),
-        # l int - local balance
-        App.localPut(Int(0), Bytes("LocalBalance"), Int(0)),
+        # approve opt in
         Return(Int(1))
     ])
 
