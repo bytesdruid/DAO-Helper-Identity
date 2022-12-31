@@ -32,23 +32,14 @@ def approval_program():
         ]
     )
 
-    update_credentials = Seq(
+    opt_in = Seq(
         [
-            # requires two app args (the noop call name and the credentials)
-            Assert(Txn.application_args.length() == Int(2)),
-            # changes the credentials global state with the second app arg in the array
-            App.globalPut(Bytes("Credentials"), Txn.application_args[1]),
-            # approves sequence
+            # must be creator to opt in 
+            Assert(Txn.sender() == Global.creator_address()),
+            # approve opt in
             Return(Int(1)),
         ]
     )
-
-    opt_in = Seq([
-        # must be creator to opt in 
-        Assert(Txn.sender() == Global.creator_address()),
-        # approve opt in
-        Return(Int(1))
-    ])
 
     on_closeout = Seq(
         [
@@ -59,52 +50,24 @@ def approval_program():
         ]
     )
 
-    mint = Seq(
+    update_dao_helper_username = Seq(
         [
+            # requires two app args (the noop call name and the credentials)
             Assert(Txn.application_args.length() == Int(2)),
-            Assert(Btoi(Txn.application_args[1]) <= App.globalGet(Bytes("GlobalReserve"))),
-            App.globalPut(
-                Bytes("GlobalReserve"), App.globalGet(Bytes("GlobalReserve")) - Btoi(Txn.application_args[1]),
-            ),
-            App.localPut(
-                Int(0),
-                Bytes("LocalBalance"),
-                App.localGet(Int(0), Bytes("LocalBalance")) + Btoi(Txn.application_args[1]),
-            ),
-            Return(is_admin),
-        ]
-    )
-
-    transfer_amount = Btoi(Txn.application_args[1])    
-    transfer = Seq(
-        [
-            Assert(Txn.application_args.length() == Int(2)),
-            Assert(transfer_amount <= App.localGet(Int(0), Bytes("LocalBalance"))),
-            App.localPut(
-                Int(0),
-                Bytes("LocalBalance"),
-                App.localGet(Int(0), Bytes("LocalBalance")) - transfer_amount,
-            ),
-            App.localPut(
-                Int(1),                 
-                Bytes("LocalBalance"),
-                App.localGet(Int(1), Bytes("LocalBalance")) + transfer_amount,
-            ),
+            # changes the credentials global state with the second app arg in the array
+            App.globalPut(Bytes("Credentials"), Txn.application_args[1]),
+            # approves sequence
             Return(Int(1)),
         ]
     )
 
     program = Cond(
         [Txn.application_id() == Int(0), on_creation],
-        [Txn.on_completion() == OnComplete.DeleteApplication, Return(is_admin)],
-        [Txn.on_completion() == OnComplete.UpdateApplication, Return(is_admin)],
+        [Txn.on_completion() == OnComplete.DeleteApplication, Return(1)],
+        [Txn.on_completion() == OnComplete.UpdateApplication, Return(1)],
         [Txn.on_completion() == OnComplete.CloseOut, on_closeout],
         [Txn.on_completion() == OnComplete.OptIn, opt_in],
-        [Txn.application_args[0] == Bytes("Init_Admin"), init_admin],
-        [Txn.application_args[0] == Bytes("Set_Admin"), set_admin],
-        [Txn.application_args[0] == Bytes("Mint"), mint],
-        [Txn.application_args[0] == Bytes("Transfer"), transfer],
-        [Txn.application_args[0] == Bytes("Update_Cred"), update_credentials],
+        [Txn.application_args[0] == Bytes("Update_DAO_Helper_Username"), update_dao_helper_username],
     )
 
     return program
