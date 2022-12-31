@@ -85,11 +85,6 @@ def approval_program():
 def clear_state_program():
     program = Seq(
         [
-            App.globalPut(
-                Bytes("GlobalReserve"),
-                App.globalGet(Bytes("GlobalReserve"))
-                + App.localGet(Int(0), Bytes("LocalBalance")),
-            ),
             Return(Int(1)),
         ]
     )
