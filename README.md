@@ -1,5 +1,3 @@
-MY GOAL IS TO BE ABLE TO HAND OFF TO FROND END PERSON AKA smart contracts and AlgoSDK scripts (this is my specialization)
-
 ####################################################################
 ####################### CHECKLIST ##################################
 ####################################################################
