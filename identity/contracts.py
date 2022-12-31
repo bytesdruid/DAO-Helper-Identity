@@ -1,3 +1,6 @@
+# currently the update functions replace current values with the app arg
+# need to figure out how we want to approach adding items or removing items from byteslices
+
 from pyteal import *
 
 def approval_program():
@@ -78,6 +81,17 @@ def approval_program():
             Assert(Txn.application_args.length() == Int(2)),
             # changes the credentials global state with the second app arg in the array
             App.globalPut(Bytes("Email_Address"), Txn.application_args[1]),
+            # approves sequence
+            Return(Int(1)),
+        ]
+    )
+
+    update_eth_wallet_addresses = Seq(
+        [
+            # requires two app args (the noop call name and the credentials)
+            Assert(Txn.application_args.length() == Int(2)),
+            # changes the credentials global state with the second app arg in the array
+            App.globalPut(Bytes("ETH_Wallet_Addresses"), Txn.application_args[1]),
             # approves sequence
             Return(Int(1)),
         ]
