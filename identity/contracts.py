@@ -68,6 +68,16 @@ def approval_program():
         [Txn.on_completion() == OnComplete.CloseOut, on_closeout],
         [Txn.on_completion() == OnComplete.OptIn, opt_in],
         [Txn.application_args[0] == Bytes("Update_DAO_Helper_Username"), update_dao_helper_username],
+        [Txn.application_args[0] == Bytes("Update_Name"), update_name],
+        [Txn.application_args[0] == Bytes("Update_Email_Address"), update_email_address],
+        [Txn.application_args[0] == Bytes("Update_ETH_Wallet_Addresses"), update_eth_wallet_addresses],
+        [Txn.application_args[0] == Bytes("Update_Near_Wallet_Addresses"), update_near_wallet_addresses],
+        [Txn.application_args[0] == Bytes("Update_DAOs_Memberships"), update_daos_memberships],
+        [Txn.application_args[0] == Bytes("Update_NFTs_Badges"), update_nfts_badges],
+        [Txn.application_args[0] == Bytes("Update_Skills"), update_skills],
+        [Txn.application_args[0] == Bytes("Update_Tasks_Completed"), update_tasks_completed],
+        [Txn.application_args[0] == Bytes("Update_Tokens"), update_tokens],
+        [Txn.application_args[0] == Bytes("Update_Hours_Worked"), update_hours_worked],
     )
 
     return program
