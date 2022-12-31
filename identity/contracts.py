@@ -50,31 +50,11 @@ def approval_program():
         Return(Int(1))
     ])
 
-    init_admin = Seq([
-        # make sure account opting in is the contract creator address
-        Assert(Txn.sender() == Global.creator_address()),
-        # set the txn sender address to manager
-        App.localPut(Int(0), Bytes("Admin"), Int(1)),
-        Return(Int(1))
-    ])
-
-    is_admin = App.localGet(Int(0), Bytes("Admin"))
-
-    set_admin = Seq(
-        [
-            Assert(And(is_admin, Txn.application_args.length() == Int(1))),
-            App.localPut(Int(1), Bytes("Admin"), Int(1)),
-            Return(Int(1)),
-        ]
-    )
-
     on_closeout = Seq(
         [
-            App.globalPut(
-                Bytes("GlobalReserve"),
-                App.globalGet(Bytes("GlobalReserve"))
-                + App.localGet(Int(0), Bytes("LocalBalance")),
-            ),
+            # must be creator to opt in 
+            Assert(Txn.sender() == Global.creator_address()),
+            # approve closeout
             Return(Int(1)),
         ]
     )
