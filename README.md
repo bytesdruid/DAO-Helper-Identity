@@ -11,6 +11,7 @@
 [COMPLETED_12/28] Fourth: link SC and newly created user account, new acct is soulbound owner
 
 [COMPLETED_12/30] Fifth: add all V1 variables in SC for information we want to capture
+
             A. ETH Wallet Addresses
             B. Email
             C. Name
@@ -30,11 +31,17 @@
 ###################################################################
 
 Goals:
+
     1. [5] Wants to get rid of the wallets on site and add them inside of the user profile.
+
     2. [1,2] When users sign up on the website need to create an algo account  and SC on the backend that represents them.
+
         a. [5] Add other chain wallet address information.
+
     3. [1,2] Least we can do on chain is prove that a wallet owns a profile (soulbound SC and owner acct).
+
     4. Can we incorporate [magic_link]? [NO] They only provide MetaMask, WalletConnect and Coinbase Wallet suppport.
+
     5. [5] We want to show ownership of DAO Helper profile on chain.
 
 ###################################################################
