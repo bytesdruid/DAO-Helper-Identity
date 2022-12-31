@@ -1,7 +1,5 @@
 from pyteal import *
 
-            # D. DAOs/Memberships
-            # E. NFT/Badges
             # F. Skills
             # G. tasks completed
             # H. hours worked
@@ -22,6 +20,8 @@ def approval_program():
             App.globalPut(Bytes("NEAR_Wallet_Addresses"), Bytes("")),
             # 6 g byteslice - DAOs_Memberships
             App.globalPut(Bytes("DAOs_Memberships"), Bytes("")),
+            # 7 g byteslice - NFTs_Badges
+            App.globalPut(Bytes("NFTs_Badges"), Bytes("")),
 
             # approve sequence
             Return(Int(1)),
