@@ -7,23 +7,25 @@ from pyteal import *
 def approval_program():
     on_creation = Seq(
         [
-            # 1 g byteslice - DAO Helper Username
+            # 1 g byteslice - Identity Owner's Algorand Address
+            App.globalPut(Bytes("Soulbound_Identity_Owner"), Bytes(Global.creator_address())),
+            # 2 g byteslice - DAO Helper Username
             App.globalPut(Bytes("DAO_Helper_Username"), Bytes("")),
-            # 2 g byteslice - Name ??? Don't think we use their name b/c of anonymity
+            # 3 g byteslice - Name ??? Don't think we use their name b/c of anonymity
             App.globalPut(Bytes("Name"), Bytes("")),
-            # 3 g byteslice - Email Address
+            # 4 g byteslice - Email Address
             App.globalPut(Bytes("Email_Address"), Bytes("")),
-            # 4 g byteslice - ETH Wallet Addresses
+            # 5 g byteslice - ETH Wallet Addresses
             App.globalPut(Bytes("ETH_Wallet_Addresses"), Bytes("")),
-            # 5 g byteslice - NEAR Wallet Addresses
+            # 6 g byteslice - NEAR Wallet Addresses
             App.globalPut(Bytes("NEAR_Wallet_Addresses"), Bytes("")),
-            # 6 g byteslice - DAOs and Memberships
+            # 7 g byteslice - DAOs and Memberships
             App.globalPut(Bytes("DAOs_Memberships"), Bytes("")),
-            # 7 g byteslice - NFTs and Badges
+            # 8 g byteslice - NFTs and Badges
             App.globalPut(Bytes("NFTs_Badges"), Bytes("")),
-            # 8 g byteslice - Skills
+            # 9 g byteslice - Skills
             App.globalPut(Bytes("Skills"), Bytes("")),
-            # 9 g byteslice - Tasks Completed
+            # 10 g byteslice - Tasks Completed
             App.globalPut(Bytes("Tasks_Completed"), Bytes("")),
 
             # approve sequence
