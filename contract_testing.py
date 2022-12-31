@@ -1,12 +1,10 @@
 from pyteal import *
 
-            # A. ETH Wallet Addresses
             # D. DAOs/Memberships
             # E. NFT/Badges
             # F. Skills
             # G. tasks completed
             # H. hours worked
-            # I. NEAR Wallet Addresses
             # J. Tokens
 
 def approval_program():
@@ -20,7 +18,10 @@ def approval_program():
             App.globalPut(Bytes("Email_Address"), Bytes("")),
             # 4 g byteslice - ETH Wallet Addresses
             App.globalPut(Bytes("ETH_Wallet_Addresses"), Bytes("")),
-
+            # 5 g byteslice - NEAR Wallet Addresses
+            App.globalPut(Bytes("NEAR_Wallet_Addresses"), Bytes("")),
+            # 6 g byteslice - DAOs_Memberships
+            App.globalPut(Bytes("DAOs_Memberships"), Bytes("")),
 
             # approve sequence
             Return(Int(1)),
