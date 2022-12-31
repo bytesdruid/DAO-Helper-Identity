@@ -1,10 +1,22 @@
 from pyteal import *
 
+            A. ETH Wallet Addresses
+            B. Email
+            C. Name
+            D. DAOs/Memberships
+            E. NFT/Badges
+            F. Skills
+            G. tasks completed
+            H. hours worked
+            I. NEAR Wallet Addresses
+            J. Tokens
+            K. DAO Helper Username
+
 def approval_program():
     on_creation = Seq(
         [
             # g byteslice - asset name is Bloom Credential
-            App.globalPut(Bytes("AssetName"), Bytes("Bloom Credentials")),
+            App.globalPut(Bytes("DAO_Helper_Username"), Bytes("")),
             # g byteslice - unit name is BLT
             App.globalPut(Bytes("UnitName"), Bytes("BL1")),
             # g byteslice - credentials
