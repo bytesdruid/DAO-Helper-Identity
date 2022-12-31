@@ -7,7 +7,7 @@ def approval_program():
     on_creation = Seq(
         [
             # 1 g byteslice - Identity Owner's Algorand Address
-            App.globalPut(Bytes("Soulbound_Identity_Owner"), Bytes(Txn.application_args[1])),
+            App.globalPut(Bytes("Soulbound_Identity_Owner"), Txn.application_args[0]),
             # 2 g byteslice - DAO Helper Username
             App.globalPut(Bytes("DAO_Helper_Username"), Bytes("")),
             # 3 g byteslice - Name ??? Don't think we use their name b/c of anonymity
@@ -168,16 +168,18 @@ def approval_program():
             # requires two app args (the noop call name and the credentials)
             Assert(Txn.application_args.length() == Int(2)),
             # changes the credentials global state with the second app arg in the array
-            App.globalPut(Bytes("Hours_Worked"), App.globalGet(Bytes("Hours_Worked")) + Txn.application_args[1]),
+            App.globalPut(Bytes("Hours_Worked"), App.globalGet(Bytes("Hours_Worked")) + Btoi(Txn.application_args[1])),
             # approves sequence
             Return(Int(1)),
         ]
     )
 
+    is_soulbound_addr = Txn.sender() == App.globalGet(Bytes("Soulbound_Identity_Owner"))
+
     program = Cond(
         [Txn.application_id() == Int(0), on_creation],
-        [Txn.on_completion() == OnComplete.DeleteApplication, Return(1)],
-        [Txn.on_completion() == OnComplete.UpdateApplication, Return(1)],
+        [Txn.on_completion() == OnComplete.DeleteApplication, Return(is_soulbound_addr)],
+        [Txn.on_completion() == OnComplete.UpdateApplication, Return(is_soulbound_addr)],
         [Txn.on_completion() == OnComplete.CloseOut, on_closeout],
         [Txn.on_completion() == OnComplete.OptIn, opt_in],
         [Txn.application_args[0] == Bytes("Update_DAO_Helper_Username"), update_dao_helper_username],
