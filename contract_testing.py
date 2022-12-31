@@ -2,7 +2,6 @@ from pyteal import *
 
             # A. ETH Wallet Addresses
             # B. Email
-            # C. Name
             # D. DAOs/Memberships
             # E. NFT/Badges
             # F. Skills
@@ -10,14 +9,15 @@ from pyteal import *
             # H. hours worked
             # I. NEAR Wallet Addresses
             # J. Tokens
-            # K. DAO Helper Username [GOOD]
 
 def approval_program():
     on_creation = Seq(
         [
             # 1 g byteslice - DAO Helper Username
             App.globalPut(Bytes("DAO_Helper_Username"), Bytes("")),
-            # 2 g byteslice - 
+            # 2 g byteslice - Name ??? Don't think we use their name b/c of anonymity
+            App.globalPut(Bytes("Name"), Bytes("")),
+            # 3 g byteslice - Email Address
             App.globalPut(Bytes("Email_Address"), Bytes("")),
 
 
