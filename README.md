@@ -24,7 +24,7 @@
             J. Tokens
             K. DAO Helper Username
             
-[] Sixth: add application calls that update information in the SC
+[NEED_REQS_FROM_FRONT_END_DEV] Sixth: add application calls that update information in the SC
 
 ###################################################################
 ####################### Kash 12/21 Notes ##########################
@@ -40,7 +40,7 @@ Goals:
 
     3. [1,2] Least we can do on chain is prove that a wallet owns a profile (soulbound SC and owner acct).
 
-    4. Can we incorporate [magic_link]? [NO] They only provide MetaMask, WalletConnect and Coinbase Wallet suppport.
+    4. Can we incorporate [magic_link]? [YES-But not in this script, need to provide magic link data as input to the scripting or update the SC later using app calls.] They only provide MetaMask, WalletConnect and Coinbase Wallet suppport.
 
     5. [5] We want to show ownership of DAO Helper profile on chain.
 
